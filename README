@@ -21,7 +21,7 @@ DESCRIPTION
 
     In particular, it checks that all indentation is done using tabs, not
     spaces; alignment is done via spaces, not tabs; indentation levels never
-    jump (e.g. going from 1 tab indent to 3 tab indent without an
+    jump up (e.g. going from 1 tab indent to 3 tab indent without an
     intervening 2 tab indent); and there is no trailing whitespace on any
     line (though lines may consist entirely of whitespace).
 
