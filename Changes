@@ -6,6 +6,18 @@ Home page:    <https://metacpan.org/release/Test-Tabs>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
+0.003  2013-05-24
+
+ - (Addition) Also test files named *.psgi.
+ - (Addition) Implement `## no Test::Tabs` and `## use Test::Tabs` comments
+   to ignore whitespace rules for a block of lines.
+ - (Addition) Implement `## skip Test::Tabs` to skip whitespace tests for a
+   file.
+ - (Addition) Implement `##WS` comment to ignore whitespace rules for one
+   line.
+ - (Bugfix) Properly report the line number of test failures.
+ - Report all whitespace problems in a file; not just the first.
+
 0.002  2012-09-26
 
  - Allow lines to jump *down* indent, as this is occasionlly useful for

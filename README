@@ -28,13 +28,19 @@ DESCRIPTION
     Comment lines and pod are ignored. (A future version may also ignore
     heredocs.)
 
+    A trailing comment "##WS" can be used to ignore all whitespace rules for
+    that line. "## no Test::Tabs" can be used to begin ignoring whitespace
+    rules for all following lines until "## use Test::Tabs" is seen. "##
+    skip Test::Tabs" tells Test::Tabs to skip the current file, but it must
+    be used *before* the first whitespace rule violation.
+
   Functions
     "all_perl_files_ok( @directories )"
         Applies "tabs_ok()" to all perl files found in @directories
         recursively. If no @directories are given, the starting point is one
         level above the current running script, that should cover all the
-        files of a typical CPAN distribution. A perl file is *.pl or *.pm or
-        *.t or a file starting with "#!...perl".
+        files of a typical CPAN distribution. A perl file is *.pl, *.pm,
+        *.psgi, *.t, or a file starting with "#!...perl".
 
     "tabs_ok( $file, $text )"
         Run a tab check on $file. For a module, either the path
@@ -55,7 +61,7 @@ AUTHOR
     Large portions stolen from Test::NoTabs by Nick Gerakines.
 
 COPYRIGHT AND LICENCE
-    This software is copyright (c) 2012 by Toby Inkster.
+    This software is copyright (c) 2012-2013 by Toby Inkster.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

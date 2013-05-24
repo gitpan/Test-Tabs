@@ -1,0 +1,82 @@
+@prefix cpan: <http://purl.org/NET/cpan-uri/person/> .
+@prefix cpant: <http://purl.org/NET/cpan-uri/terms#> .
+@prefix dbug: <http://ontologi.es/doap-bugs#> .
+@prefix dcs: <http://ontologi.es/doap-changeset#> .
+@prefix dist: <http://purl.org/NET/cpan-uri/dist/Test-Tabs/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+_:r1369380035r0 a dcs:Change ;
+	rdfs:label "Allow lines to jump *down* indent, as this is occasionlly useful for statement modifiers." .
+_:r1369380035r1 a dcs:Addition ;
+	rdfs:label "Implement `##WS` comment to ignore whitespace rules for one line." .
+_:r1369380035r2 a dcs:Addition ;
+	rdfs:label "Implement `## no Test::Tabs` and `## use Test::Tabs` comments to ignore whitespace rules for a block of lines." .
+_:r1369380035r3 a dcs:Addition ;
+	rdfs:label "Implement `## skip Test::Tabs` to skip whitespace tests for a file." .
+_:r1369380035r4 a dcs:Addition ;
+	rdfs:label "Also test files named *.psgi." .
+_:r1369380035r5 a dcs:Change ;
+	rdfs:label "Report all whitespace problems in a file; not just the first." .
+_:r1369380035r6 a dcs:Bugfix ;
+	rdfs:label "Properly report the line number of test failures." .
+_:r1369380035r7 <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Test/Tabs.pm" ;
+	<http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#programmingLanguage> "Perl" ;
+	a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>, <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode> ;
+	rdfs:label "Test::Tabs" .
+_:r1369380035r8 <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Test/Tabs.pm" ;
+	<http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#programmingLanguage> "Perl" ;
+	a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>, <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode> ;
+	rdfs:label "Test::Tabs" .
+_:r1369380035r9 <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "lib/Test/Tabs.pm" ;
+	<http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#programmingLanguage> "Perl" ;
+	a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>, <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode> ;
+	rdfs:label "Test::Tabs" .
+_:rb6CF63A18C44211E282998B805778BE17r0 dcs:item _:r1369380035r0 .
+_:rb6CF63A18C44211E282998B805778BE17r1 dcs:item _:r1369380035r1, _:r1369380035r2, _:r1369380035r3, _:r1369380035r4, _:r1369380035r5, _:r1369380035r6 .
+<http://dev.perl.org/licenses/> <http://purl.org/dc/terms/title> "the same terms as the perl 5 programming language system itself" .
+dist:project cpant:perl_version_from _:r1369380035r7 ;
+	cpant:readme_from _:r1369380035r9 ;
+	cpant:test_requires "Test::More 0.61"^^cpant:dsWithVersion ;
+	cpant:version_from _:r1369380035r8 ;
+	<http://purl.org/dc/terms/contributor> cpan:tobyink ;
+	doap:bug-database <http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs> ;
+	doap:created "2012-09-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:developer cpan:tobyink ;
+	doap:download-page <https://metacpan.org/release/Test-Tabs> ;
+	doap:homepage <https://metacpan.org/release/Test-Tabs> ;
+	doap:license <http://dev.perl.org/licenses/> ;
+	doap:maintainer cpan:tobyink ;
+	doap:name "Test-Tabs" ;
+	doap:programming-language "Perl" ;
+	doap:release dist:v_0-001, dist:v_0-002, dist:v_0-003 ;
+	doap:shortdesc "check the presence of tabs in your project" ;
+	a doap:Project .
+dist:v_0-001 dcs:released-by cpan:tobyink ;
+	<http://purl.org/dc/terms/identifier> "Test-Tabs-0.001"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	<http://purl.org/dc/terms/issued> "2012-09-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:file-release <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Test-Tabs-0.001.tar.gz> ;
+	doap:revision "0.001"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version ;
+	rdfs:label "Initial release" .
+dist:v_0-002 dcs:changeset _:rb6CF63A18C44211E282998B805778BE17r0 ;
+	dcs:released-by cpan:tobyink ;
+	<http://purl.org/dc/terms/identifier> "Test-Tabs-0.002"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	<http://purl.org/dc/terms/issued> "2012-09-26"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:file-release <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Test-Tabs-0.002.tar.gz> ;
+	doap:revision "0.002"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version .
+dist:v_0-003 dcs:changeset _:rb6CF63A18C44211E282998B805778BE17r1 ;
+	dcs:released-by cpan:tobyink ;
+	<http://purl.org/dc/terms/identifier> "Test-Tabs-0.003"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	<http://purl.org/dc/terms/issued> "2013-05-24"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	doap:file-release <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Test-Tabs-0.003.tar.gz> ;
+	doap:revision "0.003"^^<http://www.w3.org/2001/XMLSchema#string> ;
+	a doap:Version .
+cpan:tobyink a foaf:Person ;
+	foaf:mbox <mailto:tobyink@cpan.org> ;
+	foaf:name "Toby Inkster" ;
+	foaf:nick "TOBYINK" ;
+	foaf:page <https://metacpan.org/author/TOBYINK> .

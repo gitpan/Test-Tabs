@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Test::Tabs::AUTHORITY = 'cpan:TOBYINK';
-	$Test::Tabs::VERSION   = '0.002';
+	$Test::Tabs::VERSION   = '0.003';
 }
 
 use Test::Builder;
@@ -70,53 +70,73 @@ sub _all_files
 	find( $find_arg, @base_dirs);
 	return @found;
 }
-
+ 
 sub tabs_ok
 {
 	my $file = shift;
-	my $test_txt = shift || "OK tabs in '$file'";
 	$file = _module_to_path($file);
-	open my $fh, $file or do { $Test->ok(0, $test_txt); $Test->diag("Could not open $file: $!"); return; };
+	open my $fh, $file or do {
+		$Test->ok(0, "whitespace for $file");
+		$Test->diag("Could not open $file: $!");
+		return;
+	};
 	my $line        = 0;
 	my $last_indent = 0;
+	my $ignoring    = 0;
+	my $ok          = 1;
 	while (<$fh>)
 	{
 		$line++;
+		
+		my $ignore_line = /##\s*WS/i;
+		$ignoring = 1 if /#\s*no\s*Test::Tabs/;
+		$ignoring = 0 if /#\s*use\s*Test::Tabs/;
+		
+		if (/#\s*skip\s*Test::Tabs/)
+		{
+			$ok
+				? $Test->skip($file)
+				: $Test->ok($ok, "$file contains skip comment, but problems already encountered");
+			return $ok;
+		}
+		
 		next if (/^\s*#/);
 		next if (/^\s*=.+/ .. (/^\s*=(cut|back|end)/ || eof($fh)));
 		last if (/^\s*(__END__|__DATA__)/);
+		next if $ignoring || $ignore_line;
 		
 		my ($indent, $remaining) = (/^([\s\x20]*)(.*)/);
 		next unless length $remaining;
 		
 		if ($indent =~ /\x20/)
 		{
-			$Test->ok(0, $test_txt . " had space indent on line $line");
-			return 0;
+			$Test->diag("$file had space indent on line $line");
+			$ok = 0;
 		}
 		if ($remaining =~ /\t/)
 		{
-			$Test->ok(0, $test_txt . " had non-indenting tab on line $line");
-			return 0;
+			$Test->diag("$file had non-indenting tab on line $line");
+			$ok = 0;
 		}
 		if ($remaining =~ /\s$/)
 		{
-			$Test->ok(0, $test_txt . " had trailing whitespace on line $line");
-			return 0;
+			$Test->diag("$file had trailing whitespace on line $line");
+			$ok = 0;
 		}
 		if (length($indent) - $last_indent > 1)
 		{
-			$Test->ok(0, $test_txt . " had jumping indent on line $line");
-			return 0;
+			$Test->diag("$file had jumping indent on line $line");
+			$ok = 0;
 		}
 		$last_indent = length $indent;
 	}
-	$Test->ok(1, $test_txt);
-	return 1;
+	$Test->ok($ok, "whitespace for $file");
+	return $ok;
 }
 
 sub all_perl_files_ok
 {
+	local $Test::Builder::Level = $Test::Builder::Level + 1;
 	my @files = _all_perl_files( @_ );
 	_make_plan();
 	foreach my $file ( sort @files )
@@ -134,6 +154,7 @@ sub _is_perl_script
 {
 	my $file = shift;
 	return 1 if $file =~ /\.pl$/i;
+	return 1 if $file =~ /\.psgi$/;
 	return 1 if $file =~ /\.t$/;
 	open (my $fh, $file) or return;
 	my $first = <$fh>;
@@ -174,12 +195,20 @@ sub _untaint
 sub __silly {
 	# this is just for testing really.
 	print "$_\n"
-		for 1..3;
+	  for 1..3;  ##WS
 }
 
-1;
+## no Test::Tabs
+  1;
+## use Test::Tabs
 
 __END__
+
+=pod
+
+=encoding utf-8
+
+=for stopwords whitespace heredocs
 
 =head1 NAME
 
@@ -214,6 +243,12 @@ line (though lines may consist entirely of whitespace).
 Comment lines and pod are ignored. (A future version may also ignore
 heredocs.)
 
+A trailing comment C<< ##WS >> can be used to ignore all whitespace
+rules for that line. C<< ## no Test::Tabs >> can be used to begin ignoring
+whitespace rules for all following lines until C<< ## use Test::Tabs >> is
+seen. C<< ## skip Test::Tabs >> tells Test::Tabs to skip the current file,
+but it must be used I<before> the first whitespace rule violation.
+
 =head2 Functions
 
 =over
@@ -223,8 +258,8 @@ heredocs.)
 Applies C<< tabs_ok() >> to all perl files found in C<< @directories >>
 recursively. If no C<< @directories >> are given, the starting point is
 one level above the current running script, that should cover all the
-files of a typical CPAN distribution. A perl file is *.pl or *.pm or *.t
-or a file starting with C<< #!...perl >>.
+files of a typical CPAN distribution. A perl file is *.pl, *.pm, *.psgi,
+*.t, or a file starting with C<< #!...perl >>.
 
 =item C<< tabs_ok( $file, $text ) >>
 
@@ -253,7 +288,7 @@ Large portions stolen from L<Test::NoTabs> by Nick Gerakines.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012-2013 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
