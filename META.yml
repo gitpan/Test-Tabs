@@ -1,31 +1,34 @@
 ---
 abstract: 'check the presence of tabs in your project'
 author:
-  - 'Toby Inkster <tobyink@cpan.org>'
+  - 'Toby Inkster (TOBYINK) <tobyink@cpan.org>'
 build_requires:
-  ExtUtils::MakeMaker: 6.59
-  Test::More: 0.61
+  Test::More: '0.61'
 configure_requires:
-  ExtUtils::MakeMaker: 6.59
-distribution_type: module
+  ExtUtils::MakeMaker: '6.17'
 dynamic_config: 0
-generated_by: 'Module::Install version 1.06'
+generated_by: 'Moose::Meta::Class::__ANON__::SERIAL::8 version , CPAN::Meta::Converter version 2.140640'
 keywords: []
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-module_name: Test::Tabs
+  version: '1.4'
 name: Test-Tabs
 no_index:
   directory:
+    - eg
+    - examples
     - inc
     - t
     - xt
-requires:
-  perl: 5.8.0
+optional_features: {}
+provides:
+  Test::Tabs:
+    file: lib/Test/Tabs.pm
+    version: '0.004'
 resources:
+  X_identifier: http://purl.org/NET/cpan-uri/dist/Test-Tabs/project
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs
   homepage: https://metacpan.org/release/Test-Tabs
   license: http://dev.perl.org/licenses/
-version: 0.003
+version: '0.004'

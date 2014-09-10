@@ -22,29 +22,29 @@ DESCRIPTION
     In particular, it checks that all indentation is done using tabs, not
     spaces; alignment is done via spaces, not tabs; indentation levels never
     jump up (e.g. going from 1 tab indent to 3 tab indent without an
-    intervening 2 tab indent); and there is no trailing whitespace on any
-    line (though lines may consist entirely of whitespace).
+    intervening 2 tab indent); and there is no trailing whitespace on any line
+    (though lines may consist entirely of whitespace).
 
     Comment lines and pod are ignored. (A future version may also ignore
     heredocs.)
 
-    A trailing comment "##WS" can be used to ignore all whitespace rules for
-    that line. "## no Test::Tabs" can be used to begin ignoring whitespace
-    rules for all following lines until "## use Test::Tabs" is seen. "##
-    skip Test::Tabs" tells Test::Tabs to skip the current file, but it must
-    be used *before* the first whitespace rule violation.
+    A trailing comment `##WS` can be used to ignore all whitespace rules for
+    that line. `## no Test::Tabs` can be used to begin ignoring whitespace
+    rules for all following lines until `## use Test::Tabs` is seen. `## skip
+    Test::Tabs` tells Test::Tabs to skip the current file, but it must be used
+    *before* the first whitespace rule violation.
 
   Functions
-    "all_perl_files_ok( @directories )"
-        Applies "tabs_ok()" to all perl files found in @directories
+    `all_perl_files_ok( @directories )`
+        Applies `tabs_ok()` to all perl files found in @directories
         recursively. If no @directories are given, the starting point is one
         level above the current running script, that should cover all the
         files of a typical CPAN distribution. A perl file is *.pl, *.pm,
-        *.psgi, *.t, or a file starting with "#!...perl".
+        *.psgi, *.t, or a file starting with `#!...perl`.
 
-    "tabs_ok( $file, $text )"
+    `tabs_ok( $file, $text )`
         Run a tab check on $file. For a module, either the path
-        ("lib/My/Module.pm") or the package name ("My::Module") can be used.
+        (`lib/My/Module.pm`) or the package name (`My::Module`) can be used.
 
         $text is the optional test name.
 
@@ -63,8 +63,8 @@ AUTHOR
 COPYRIGHT AND LICENCE
     This software is copyright (c) 2012-2013 by Toby Inkster.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+    This is free software; you can redistribute it and/or modify it under the
+    same terms as the Perl 5 programming language system itself.
 
 DISCLAIMER OF WARRANTIES
     THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
