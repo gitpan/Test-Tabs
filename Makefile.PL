@@ -7,7 +7,7 @@ my $meta = {
   "abstract"       => "check the presence of tabs in your project",
   "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>"],
   "dynamic_config" => 0,
-  "generated_by"   => "Moose::Meta::Class::__ANON__::SERIAL::8 version , CPAN::Meta::Converter version 2.140640",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.021, CPAN::Meta::Converter version 2.140640",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -18,19 +18,25 @@ my $meta = {
   "no_index"       => { directory => ["eg", "examples", "inc", "t", "xt"] },
   "prereqs"        => {
                         configure => { requires => { "ExtUtils::MakeMaker" => 6.17 } },
+                        runtime => { requires => { perl => 5.008 } },
                         test => { requires => { "Test::More" => 0.61 } },
                       },
   "provides"       => {
-                        "Test::Tabs" => { file => "lib/Test/Tabs.pm", version => 0.004 },
+                        "Test::Tabs" => { file => "lib/Test/Tabs.pm", version => 0.005 },
                       },
   "release_status" => "stable",
   "resources"      => {
                         bugtracker   => { web => "http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs" },
                         homepage     => "https://metacpan.org/release/Test-Tabs",
                         license      => ["http://dev.perl.org/licenses/"],
-                        X_identifier => "http://purl.org/NET/cpan-uri/dist/Test-Tabs/project",
+                        repository   => {
+                                          type => "git",
+                                          url  => "git://github.com/tobyink/p5-test-tabs.git",
+                                          web  => "https://github.com/tobyink/p5-test-tabs",
+                                        },
+                        x_identifier => "http://purl.org/NET/cpan-uri/dist/Test-Tabs/project",
                       },
-  "version"        => 0.004,
+  "version"        => 0.005,
 };
 
 my %dynamic_config;

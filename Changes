@@ -6,6 +6,15 @@ Home page:    <https://metacpan.org/release/Test-Tabs>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.005	2014-09-16
+
+ [ Test Suite ]
+ - Fix test case so it no longer attempts to test our own Makefile.PL
+   (which has a space-indented portion).
+
+ [ Packaging ]
+ - Add repo link.
+
 0.004	2014-09-10
 
  [ Packaging ]

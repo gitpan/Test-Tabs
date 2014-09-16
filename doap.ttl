@@ -12,6 +12,7 @@
 <http://purl.org/NET/cpan-uri/dist/Test-Tabs/project>
 	a                    doap:Project;
 	dc:contributor       <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap-deps:runtime-requirement [ doap-deps:on "perl 5.008"^^doap-deps:CpanId ];
 	doap-deps:test-requirement [ doap-deps:on "Test::More 0.61"^^doap-deps:CpanId ];
 	doap:bug-database    <http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs>;
 	doap:created         "2012-09-20"^^xsd:date;
@@ -22,7 +23,11 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Test-Tabs";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-004>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-005>;
+	doap:repository      [
+		a doap:GitRepository;
+		doap:browse <https://github.com/tobyink/p5-test-tabs>;
+	];
 	doap:shortdesc       "check the presence of tabs in your project".
 
 <http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-001>
@@ -90,6 +95,23 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Test-Tabs-0.004.tar.gz>;
 	doap:revision        "0.004"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Test-Tabs/v_0-005>
+	a                    doap:Version;
+	dc:identifier        "Test-Tabs-0.005"^^xsd:string;
+	dc:issued            "2014-09-16"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Packaging;
+			rdfs:label "Add repo link.";
+		], [
+			a doap-changeset:Tests;
+			rdfs:label "Fix test case so it no longer attempts to test our own Makefile.PL (which has a space-indented portion).";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Test-Tabs-0.005.tar.gz>;
+	doap:revision        "0.005"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/tobyink>
 	a                    foaf:Person;

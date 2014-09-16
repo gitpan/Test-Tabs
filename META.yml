@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: '6.17'
 dynamic_config: 0
-generated_by: 'Moose::Meta::Class::__ANON__::SERIAL::8 version , CPAN::Meta::Converter version 2.140640'
+generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.021, CPAN::Meta::Converter version 2.140640'
 keywords: []
 license: perl
 meta-spec:
@@ -25,10 +25,13 @@ optional_features: {}
 provides:
   Test::Tabs:
     file: lib/Test/Tabs.pm
-    version: '0.004'
+    version: '0.005'
+requires:
+  perl: '5.008'
 resources:
-  X_identifier: http://purl.org/NET/cpan-uri/dist/Test-Tabs/project
+  Identifier: http://purl.org/NET/cpan-uri/dist/Test-Tabs/project
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=Test-Tabs
   homepage: https://metacpan.org/release/Test-Tabs
   license: http://dev.perl.org/licenses/
-version: '0.004'
+  repository: git://github.com/tobyink/p5-test-tabs.git
+version: '0.005'
